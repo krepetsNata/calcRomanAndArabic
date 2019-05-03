@@ -2,6 +2,10 @@ import java.util.Scanner;
 
 public class Calculation {
 
+    /**
+     * ввод арабского числа
+     * @return валидное число
+     */
     public int inputNumber() {
         int num = 0;
 
@@ -20,6 +24,10 @@ public class Calculation {
         return num;
     }
 
+    /**
+     * ввод операции которую нужно произвести над двумя числами
+     * @return валидный знак операции над числами
+     */
     public char inputOperation(){
         boolean flag = false;
         char opers[] = new char[4];
@@ -48,6 +56,11 @@ public class Calculation {
         return operation;
     }
 
+    /**
+     * проверка чтобы вводимое число не было больше 10
+     * @param n проверяемое число
+     * @return число с которым в дальнейшем будут проводиться операции
+     */
     public boolean checkFirstTenNumbers(int n){
         boolean flag = false;
 
@@ -60,18 +73,42 @@ public class Calculation {
         return flag;
     }
 
+    /**
+     * складывает заданные числа
+     * @param n1 слагаемое
+     * @param n2 слагаемое
+     * @return сумма заданных слагаемых
+     */
     public int getSum(int n1, int n2){
         return n1 + n2;
     }
 
+    /**
+     * разность заданных чисел
+     * @param n1 уменьшаемое
+     * @param n2 вычетаемое
+     * @return разность заданных чисел
+     */
     public int getSub(int n1, int n2){
         return n1 - n2;
     }
 
+    /**
+     * произведение заданных чисел
+     * @param n1 множимое
+     * @param n2 множитель
+     * @return произведение заданных чисел
+     */
     public int getMult(int n1, int n2){
         return n1 * n2;
     }
 
+    /**
+     * отношение заданных чисел
+     * @param n1 делимое
+     * @param n2 делитель
+     * @return отношение заданных чисел
+     */
     public int getDiv(int n1, int n2){
         if(n2 != 0) {
             return n1 / n2;
@@ -81,6 +118,13 @@ public class Calculation {
         }
     }
 
+    /**
+     * результат операции над аргументами
+     * @param n1 аргумент
+     * @param n2 аргумент
+     * @param op операция над аргументами
+     * @return результат операции над аргументами
+     */
     public int calculation(int n1, int n2, char op){
         int result = 0;
 

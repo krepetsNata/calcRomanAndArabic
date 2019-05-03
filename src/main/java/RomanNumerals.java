@@ -2,7 +2,10 @@ import java.util.*;
 
 public class RomanNumerals {
 
+    //сортированный по убыванию список ключей и значений римских чисел
     Map<String, Integer> sortedRomanNumsMap = new LinkedHashMap<>();
+
+    //коллекция римских чисел(ключ) и их соответствия в арабских числах(значение)
     private Map<String, Integer> romanNumsMap = new HashMap<String, Integer>(){{
         put("I", 1);
         put("V", 5);
@@ -13,10 +16,15 @@ public class RomanNumerals {
         put("M", 1000);
     }};
 
+    //получить коллекцию
     public Map<String, Integer> getRomanNumsMap() {
         return romanNumsMap;
     }
 
+    /**
+     * сортировка коллекции римских чисел по убыванию
+     * @return новая коллекция римских чисел
+     */
     public Map<String, Integer> sortedRomanMapsByValue(){
 
         List<Map.Entry<String, Integer>> list = new ArrayList(romanNumsMap.entrySet());
@@ -33,6 +41,10 @@ public class RomanNumerals {
         return sortedRomanNumsMap;
     }
 
+    /**
+     * ввод римского числа
+     * @return валидное римское число
+     */
     public String inputRomanNumber(){
         String romanNum = "";
 
@@ -41,9 +53,6 @@ public class RomanNumerals {
         Scanner scan = new Scanner(System.in);
         if (scan.hasNext("[ivxlcdmIVXLCDM]*")){
             romanNum = scan.next();
-            if(!checkFirstTenNumbers(romanNum)){
-                romanNum = inputRomanNumber();
-            }
         } else{
             System.out.println("Wrong number format! Input only roman digits - i, v, x, l, c, d, m!");
             romanNum = inputRomanNumber();
@@ -51,18 +60,11 @@ public class RomanNumerals {
         return romanNum;
     }
 
-    public boolean checkFirstTenNumbers(String n){
-        boolean flag = false;
-
-        if(romanNumsMap.containsKey(n.charAt(0))){
-            System.out.println("Wrong number! The number must be from I to M!");
-            flag = false;
-        } else {
-            flag = true;
-        }
-        return flag;
-    }
-
+    /**
+     * конвертация римского числа в арабское (для произведения операций над числом)
+     * @param romanNumber римское число
+     * @return арабское число
+     */
     public int convertRomanToArabic(String romanNumber){
         romanNumber = romanNumber.toUpperCase();
         int resArabicFromRomn = 0;
@@ -83,6 +85,11 @@ public class RomanNumerals {
         return resArabicFromRomn;
     }
 
+    /**
+     * конвертация арабского числа в римское (для отображения результата операций над числом)
+     * @param arabicNumber арабское число
+     * @return римское число
+     */
     public String convertArabicToRoman(int arabicNumber) {
         StringBuilder resRomnFromArabic = new StringBuilder();
 
